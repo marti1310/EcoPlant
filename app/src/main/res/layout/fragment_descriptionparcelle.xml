@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#FFF8F3">
 
@@ -85,7 +85,7 @@
 
 
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/signupButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -95,7 +95,8 @@
                     android:text="Enregistrer l'analyse"
                     android:textColor="#4F604B"
                     android:textSize="16sp"
-                    android:padding="12dp" />
+                    android:padding="12dp"
+                    app:backgroundTint="@null"/>
 
             </LinearLayout>
         </LinearLayout>

@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Thème principal de ton app -->
+    <style name="Theme.EcoPlant" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Couleurs personnalisées si besoin -->
+        <item name="colorPrimary">@color/green_button</item> <!-- Couleur principale -->
+        <item name="colorPrimaryVariant">@color/brown_button</item> <!-- Variante plus foncée -->
+        <item name="colorOnPrimary">@color/text_green_button</item> <!-- Couleur du texte sur fond primaire -->
+        <item name="colorSecondary">@color/yellow_button</item> <!-- Couleur secondaire -->
+        <item name="colorOnSecondary">@color/text_yellow_button</item>
 
-    <style name="Theme.EcoPlant" parent="android:Theme.Material.Light.NoActionBar" />
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
 </resources>

@@ -28,7 +28,7 @@
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/logoecoplant"
                 android:contentDescription="Logo leaf"
-                android:tint="#435B44" />
+                app:tint="#435B44" />
 
 
         </LinearLayout>
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignup"
             android:layout_width="match_parent"
             android:layout_height="64dp"
@@ -53,16 +53,18 @@
             android:background="@drawable/rounded_button_brown"
             android:text="S'inscrire"
             android:textColor="#FFFCDF"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:backgroundTint="@null"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:background="@drawable/rounded_button_green"
             android:text="Se connecter"
             android:textColor="#FFFCDF"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:backgroundTint="@null"/>
 
     </LinearLayout>
 
