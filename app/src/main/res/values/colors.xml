@@ -9,5 +9,8 @@
     <color name="text_green_button">#FFFCDF</color>
     <color name="text_brown_button">#FFFCDF</color>
     <color name="text_yellow_button">#4F604B</color>
+    <color name="text_red">#C52929</color>
+    <color name="text_light_green">#357C44</color>
+    <color name="text_dark_green">#22512C</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

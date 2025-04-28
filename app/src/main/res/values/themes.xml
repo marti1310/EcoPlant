@@ -1,15 +1,18 @@
 <resources>
-    <!-- Thème principal de ton app -->
+
     <style name="Theme.EcoPlant" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Couleurs personnalisées si besoin -->
+
         <item name="colorPrimary">@color/green_button</item> <!-- Couleur principale -->
         <item name="colorPrimaryVariant">@color/brown_button</item> <!-- Variante plus foncée -->
         <item name="colorOnPrimary">@color/text_green_button</item> <!-- Couleur du texte sur fond primaire -->
         <item name="colorSecondary">@color/yellow_button</item> <!-- Couleur secondaire -->
         <item name="colorOnSecondary">@color/text_yellow_button</item>
 
-        <!-- Status bar color. -->
+        <!-- Ne pas toucher sinon barre de navigation marche pas. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="fontFamily">@font/poppins</item>
     </style>
+
 </resources>
