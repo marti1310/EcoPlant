@@ -6,13 +6,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Rectangle vert par-dessus -->
-    <ImageView
+    <FrameLayout
         android:id="@+id/rectangle_vert"
         android:layout_width="102dp"
         android:layout_height="91dp"
         android:layout_gravity="start|center_vertical"
         android:src="@drawable/rounded_button_green"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY">
 
     <!-- Fleur au-dessus du rectangle vert -->
     <ImageView
@@ -24,6 +24,8 @@
         android:src="@drawable/flower2"
         android:scaleType="centerCrop"
         android:background="@drawable/rounded_background" />
+
+    </FrameLayout>
 
     <!-- Logo poubelle à droite -->
     <ImageView
