@@ -12,7 +12,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="8dp"
-        android:background="match_parent"
+        android:background="#FFFFFF"
         android:src="@drawable/ic_back"
         android:contentDescription="Back button"
         app:tint="#436B44" />
