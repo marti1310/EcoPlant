@@ -35,21 +35,32 @@
                 android:layout_gravity="center_horizontal"
                 android:textStyle="bold"
                 android:textColor="@color/text_dark_green"
-                android:textSize="20sp" />
+                android:textSize="30sp" />
 
-            <ImageView
-                android:id="@+id/parcelleImage"
-                android:layout_width="300dp"
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:contentDescription="Picture of the parcelle"
-                android:src="@drawable/flower2"
-                app:shapeAppearanceOverlay="@style/RoundedImage"/>
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/parcelleImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/flower2"
+                    android:contentDescription="Image de la parcelle" />
+            </androidx.cardview.widget.CardView>
+
 
             <ImageButton
                 android:layout_width="210dp"
                 android:layout_height="83dp"
+
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/ajouter_button"
@@ -67,9 +78,9 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signupButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/next"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="100dp"
                 android:layout_marginBottom="50dp"

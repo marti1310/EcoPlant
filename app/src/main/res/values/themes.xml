@@ -13,6 +13,19 @@
 
         <item name="android:fontFamily">@font/poppins</item>
         <item name="fontFamily">@font/poppins</item>
+
+        <item name="materialButtonStyle">@style/CustomMaterialButtonStyle</item>
+
+
     </style>
+
+    <style name="CustomMaterialButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">339dp</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
+
+
+
+
 
 </resources>
