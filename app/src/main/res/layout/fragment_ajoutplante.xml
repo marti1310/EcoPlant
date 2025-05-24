@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="#FFF8F3">
+
 
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="8dp"
-        android:background="match_parent"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_back"
-        android:contentDescription="Back button" />
+        android:contentDescription="Back button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true">
-
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/backButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/next">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="16dp">
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choisir la parcelle"
+                android:text="Ajouter photo"
                 android:layout_gravity="center_horizontal"
                 android:textStyle="bold"
                 android:textColor="@color/text_dark_green"
                 android:textSize="30sp" />
-
 
             <androidx.cardview.widget.CardView
                 android:layout_width="200dp"
@@ -56,16 +62,13 @@
                     android:contentDescription="Image de la parcelle" />
             </androidx.cardview.widget.CardView>
 
-
             <ImageButton
                 android:layout_width="210dp"
                 android:layout_height="83dp"
-
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/ajouter_button"
-                android:contentDescription="Add new photo button"
-            />
+                android:contentDescription="Add new photo button"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -76,22 +79,23 @@
                 android:textSize="10sp"
                 android:layout_gravity="center_horizontal"/>
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/next"
-                android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="100dp"
-                android:layout_marginBottom="50dp"
-                android:background="@drawable/rounded_button_yellow"
-                android:text="Suivant"
-                android:textColor="@color/text_yellow_button"
-                android:textSize="16sp"
-                android:padding="12dp"
-                app:backgroundTint="@null"/>
-
         </LinearLayout>
-
     </ScrollView>
-</LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_button_yellow"
+        android:text="Suivant"
+        android:textStyle="bold"
+        android:textColor="@color/text_yellow_button"
+        android:textSize="16sp"
+        android:padding="12dp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="30dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
