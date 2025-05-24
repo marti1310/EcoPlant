@@ -6,6 +6,8 @@
     android:orientation="vertical"
     android:background="#FFF8F3">
 
+
+
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="48dp"
@@ -16,6 +18,14 @@
         android:contentDescription="Back button"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scores ecosystémiques"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/text_dark_green"
+        android:textSize="25sp" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -54,22 +64,15 @@
                 android:orientation="vertical"
                 android:layout_marginTop="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Scores ecosystèmiques"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_dark_green"
-                    android:textSize="20sp" />
-
                 <EditText
-                    android:id="@+id/amStrucSol"
+                    android:id="@+id/score3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_white_bg"
                     android:padding="12dp"
                     android:text="Amélioration de la structure du sol : "
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
+                    android:textStyle="bold"
                     android:textColor="@color/text_light_green" />
 
                 <EditText
@@ -79,7 +82,8 @@
                     android:background="@drawable/rounded_white_bg"
                     android:padding="12dp"
                     android:text="Capacité à retenir l'eau dans le sol: "
-                    android:layout_marginTop="4dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
                     android:textColor="@color/text_light_green" />
 
                 <EditText
@@ -89,20 +93,22 @@
                     android:background="@drawable/rounded_white_bg"
                     android:padding="12dp"
                     android:text="Apport en azote : "
-                    android:layout_marginTop="4dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
                     android:textColor="@color/text_light_green" />
 
 
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/signupButton"
+                    android:id="@+id/save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="50dp"
                     android:layout_marginBottom="50dp"
                     android:background="@drawable/rounded_button_yellow"
                     android:text="Enregistrer l'analyse"
+                    android:textStyle="bold"
                     android:textColor="@color/text_yellow_button"
                     android:textSize="16sp"
                     android:padding="12dp"

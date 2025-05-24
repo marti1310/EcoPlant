@@ -45,7 +45,8 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_button_brown"
                 android:text="Historique des analyses"
-                android:textColor="#FFFCDF"
+                android:textStyle="bold"
+                android:textColor="@color/text_brown_button"
                 android:textSize="16sp"
                 app:backgroundTint="@null"
             />
@@ -60,7 +61,8 @@
                 android:background="@drawable/rounded_button_green"
                 android:padding="12dp"
                 android:text="Gestion du compte"
-                android:textColor="#FFFCDF"
+                android:textStyle="bold"
+                android:textColor="@color/text_green_button"
                 android:textSize="16sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -72,7 +74,8 @@
                 android:background="@drawable/rounded_button_yellow"
                 android:padding="12dp"
                 android:text="Se déconnecter"
-                android:textColor="#4F604B"
+                android:textStyle="bold"
+                android:textColor="@color/text_yellow_button"
                 android:textSize="16sp"
                 app:backgroundTint="@null"/>
 

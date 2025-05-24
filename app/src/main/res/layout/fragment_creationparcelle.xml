@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#FFF8F3">
+    android:background="@color/background">
 
     <ImageButton
         android:id="@+id/backButton"
@@ -33,7 +33,6 @@
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="4dp"
                 app:cardUseCompatPadding="true">
@@ -110,14 +109,15 @@
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/signupButton"
+                    android:id="@+id/save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/rounded_button_yellow"
                     android:text="Enregistrer"
-                    android:textColor="#4F604B"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_yellow_button"
                     android:textSize="16sp"
                     android:padding="12dp"
                     app:backgroundTint="@null"/>
