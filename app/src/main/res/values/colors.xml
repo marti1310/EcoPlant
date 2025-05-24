@@ -5,7 +5,7 @@
     <color name="yellow_button">#EFE399</color>
     <color name="green_text">#FF03DAC5</color>
     <color name="dark_blue_text">#FF018786</color>
-    <color name="background">#FF000000</color>
+    <color name="background">#FFFAF1</color>
     <color name="text_green_button">#FFFCDF</color>
     <color name="text_brown_button">#FFFCDF</color>
     <color name="text_yellow_button">#4F604B</color>
@@ -14,4 +14,5 @@
     <color name="text_dark_green">#22512C</color>
     <color name="white">#FFFFFFFF</color>
     <color name="false_white">#FFFDF8</color>
+    <color name="gray">#BAB59C</color>
 </resources>
