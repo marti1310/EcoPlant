@@ -18,4 +18,8 @@ public interface UtilisateurDao {
 
     @Query("SELECT * FROM utilisateurs")
     List<Utilisateur> getAllUtilisateurs();
+
+
+    @Query("SELECT * FROM utilisateurs WHERE email = :email AND passwordHash = :password LIMIT 3")
+    Utilisateur getUserByEmailAndPassword(String email, String password);
 }

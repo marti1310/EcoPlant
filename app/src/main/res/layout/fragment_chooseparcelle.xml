@@ -39,12 +39,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/save">
 
+        <!-- TOUT est DANS UN SEUL LinearLayout -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Ici tu peux placer une liste ou recyclerview pour afficher tes parcelles dynamiquement -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,74 +54,21 @@
                 android:paddingBottom="16dp">
 
                 <LinearLayout
+                    android:id="@+id/parcelleListLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="375dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        app:cardCornerRadius="24dp"
-                        app:cardElevation="4dp"
-                        app:cardBackgroundColor="@color/false_white">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="16dp"
-                            android:gravity="center_vertical">
-
-                            <CheckBox
-                                android:id="@+id/cardCheckbox"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="16dp"/>
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="110dp"
-                                android:layout_height="90dp"
-                                app:cardCornerRadius="12dp"
-                                app:cardElevation="8dp">
-
-                                <ImageView
-                                    android:id="@+id/cardImage"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:scaleType="centerCrop"
-                                    android:src="@drawable/flower2"
-                                    android:contentDescription="Plante" />
-                            </androidx.cardview.widget.CardView>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical"
-                                android:paddingStart="16dp"
-                                android:gravity="center_vertical">
-
-                                <TextView
-                                    android:id="@+id/cardTitle"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Mon potager"
-                                    android:textColor="@color/text_dark_green"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-
+                    <!-- Exemple de CardView (à dupliquer dynamiquement depuis l’adapter) -->
+                    <!--
+                    <include layout="@layout/item_parcelle_card"/>
+                    -->
 
                 </LinearLayout>
             </HorizontalScrollView>
 
-
             <ImageButton
+                android:id="@+id/ajouter_button"
                 android:layout_width="210dp"
                 android:layout_height="83dp"
                 android:layout_gravity="center_horizontal"
@@ -130,7 +79,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prendre en photo une nouvelle espèce"
+                android:text="Ajouter une parcelle"
                 android:textColor="@color/text_light_green"
                 android:textStyle="italic"
                 android:textSize="12sp"
@@ -139,7 +88,6 @@
 
         </LinearLayout>
     </ScrollView>
-
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save"
@@ -156,6 +104,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="30dp"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.example.ecoplant.database;
 
+import android.util.Log;
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -22,9 +24,13 @@ public interface ParcelleDao {
     @Delete
     void delete(Parcelle parcelle);
 
-    @Query("SELECT * FROM parcelles WHERE user_id = :userId")
+    @Query("SELECT * FROM parcelles WHERE userId = :userId")
     List<Parcelle> getParcellesByUser(int userId);
 
     @Query("SELECT * FROM parcelles")
     List<Parcelle> getAllParcelles();
+
+
+
+
 }

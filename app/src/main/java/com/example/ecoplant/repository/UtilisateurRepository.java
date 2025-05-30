@@ -4,8 +4,6 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
 import com.example.ecoplant.database.AppDatabase;
 import com.example.ecoplant.database.UtilisateurDao;
 import com.example.ecoplant.models.Utilisateur;
@@ -46,14 +44,22 @@ public class UtilisateurRepository {
                 });
     }
 
-    public void connecterUtilisateur(String email, String password) {
+    // Connexion en ligne (Firebase)
+    public void connecterUtilisateurFirebase(String email, String password, UtilisateurLoginCallback callback) {
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(context, "Connexion réussie", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(context, "Erreur : " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                    }
+                    callback.onResult(task.isSuccessful());
                 });
+    }
+
+    // Connexion locale (Room)
+    public boolean connecterUtilisateurLocal(String email, String password) {
+        Utilisateur user = utilisateurDao.getUserByEmailAndPassword(email, password);
+        return user != null;
+    }
+
+    // Callback interface pour retour asynchrone Firebase
+    public interface UtilisateurLoginCallback {
+        void onResult(boolean success);
     }
 }

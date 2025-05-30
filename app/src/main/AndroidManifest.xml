@@ -26,7 +26,12 @@
 
         </activity>
         <activity android:name=".activities.LoginActivity"/>
-        <activity android:name=".activities.RegisterActivity"/>
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.StartActivity" />
+
+
 
     </application>
 </manifest>

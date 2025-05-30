@@ -1,5 +1,6 @@
 package com.example.ecoplant.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -41,8 +42,21 @@ public class RegisterActivity extends AppCompatActivity {
             user.setEmail(email);
             user.setPasswordHash(password);
 
-            repository.inscrireUtilisateur(user);
+            try {
+                repository.inscrireUtilisateur(user);
+                Toast.makeText(this, "Inscription réussie", Toast.LENGTH_SHORT).show();
+
+                // Redirection
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            } catch (Exception e) {
+                Toast.makeText(this, "Erreur lors de l'inscription", Toast.LENGTH_SHORT).show();
+            }
         });
+
+
 
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish());
