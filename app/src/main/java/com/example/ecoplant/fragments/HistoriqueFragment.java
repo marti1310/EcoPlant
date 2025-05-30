@@ -46,10 +46,8 @@ public class HistoriqueFragment extends Fragment {
 
         adapter = new HistoriqueAdapter(requireContext(), parcelles,
                 parcelle -> supprimerParcelle(parcelle),
-                parcelle -> {
-                    // SEULEMENT l'appel ici
-                    lancerAnalyseEtAfficher(parcelle);
-                });
+                parcelle -> lancerAnalyseEtAfficher(parcelle) // <--- Appelle cette méthode
+        );
         recyclerView.setAdapter(adapter);
 
         if (isInternetAvailable()) {
@@ -137,31 +135,29 @@ public class HistoriqueFragment extends Fragment {
         }
     }
 
+    // Appelé lors du clic sur une parcelle (depuis l'adapter)
     private void lancerAnalyseEtAfficher(Parcelle parcelle) {
         if (parcelle.getImagePaths() == null || parcelle.getImagePaths().isEmpty()) {
             Toast.makeText(requireContext(), "Aucune image pour cette parcelle.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Variables pour les scores
+        // Scores à sommer
         final double[] scoreSoil = {0.0};
         final double[] scoreWater = {0.0};
         final double[] scoreNitrogen = {0.0};
         final int[] done = {0};
         final int total = parcelle.getImagePaths().size();
 
-        // Pour chaque image, fait une requête PlantNet
+        // Pour chaque image, fais la requête PlantNet
         for (String imagePath : parcelle.getImagePaths()) {
             PlantNetApi.identifyPlant(requireContext(), new File(imagePath), "2b10mr6phr8K14uTK2FF9klO", new PlantNetApi.PlantNetCallback() {
                 @Override
                 public void onSuccess(String plantNetJson) {
-                    // Traitement simplifié : récupère les scores dans le JSON
                     try {
+                        // --- À adapter selon le JSON réel ---
                         JSONObject json = new JSONObject(plantNetJson);
-                        // À ADAPTER selon structure JSON renvoyée par PlantNet
                         // scoreSoil[0] += ...; scoreWater[0] += ...; scoreNitrogen[0] += ...;
-
-                        // --- EXEMPLE DÉMO :
                         scoreSoil[0] += 0.6;
                         scoreWater[0] += 0.4;
                         scoreNitrogen[0] += 0.7;
@@ -171,15 +167,15 @@ public class HistoriqueFragment extends Fragment {
                     }
 
                     done[0]++;
-                    // Quand toutes les requêtes sont finies, ouvre DescriptionParcelleFragment
                     if (done[0] == total) {
+                        // Quand toutes les requêtes sont terminées, navigue
                         requireActivity().runOnUiThread(() -> {
                             Bundle args = new Bundle();
                             args.putString("parcelleName", parcelle.getName());
                             args.putString("imagePath", parcelle.getImagePaths().get(0));
-                            args.putDouble("scoreSoil", scoreSoil[0]);
-                            args.putDouble("scoreWater", scoreWater[0]);
-                            args.putDouble("scoreNitrogen", scoreNitrogen[0]);
+                            args.putDouble("scoreSoil", scoreSoil[0] / total); // Moyenne
+                            args.putDouble("scoreWater", scoreWater[0] / total);
+                            args.putDouble("scoreNitrogen", scoreNitrogen[0] / total);
                             DescriptionParcelleFragment frag = new DescriptionParcelleFragment();
                             frag.setArguments(args);
                             requireActivity().getSupportFragmentManager()
@@ -199,5 +195,4 @@ public class HistoriqueFragment extends Fragment {
             });
         }
     }
-
 }

@@ -15,7 +15,7 @@ import com.example.ecoplant.models.Parcelle;
 
 @Database(
         entities = {Utilisateur.class, Plante.class, Parcelle.class},
-        version = 8 // <-- toujours +1 si tu changes le schéma !
+        version = 9 // <-- toujours +1 si tu changes le schéma !
 )
 @TypeConverters({ImageListConverter.class})
 public abstract class AppDatabase extends RoomDatabase {

@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.ecoplant.R;
+import com.example.ecoplant.api.PlantNetApi;
 import com.example.ecoplant.database.AppDatabase;
 import com.example.ecoplant.models.Plante;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -169,25 +170,61 @@ public class CameraFragment extends Fragment {
                 new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm", java.util.Locale.getDefault())
                         .format(new java.util.Date())
         );
-        Executors.newSingleThreadExecutor().execute(() -> {
-            AppDatabase db = AppDatabase.getInstance(requireContext());
-            db.planteDao().insert(plante);
 
-            requireActivity().runOnUiThread(() -> {
-                // Préparer la liste (soit nouvelle, soit issue du Bundle courant)
-                ArrayList<String> imageList = getArguments() != null ? getArguments().getStringArrayList("imageList") : new ArrayList<>();
-                if (imageList == null) imageList = new ArrayList<>();
-                imageList.add(imagePath);
+        // Appel PlantNet pour analyser la photo
+        PlantNetApi.identifyPlant(requireContext(), new File(imagePath), "2b10mr6phr8K14uTK2FF9klO", new PlantNetApi.PlantNetCallback() {
+            @Override
+            public void onSuccess(String plantNetJson) {
+                // Extraction des scores depuis la réponse JSON
+                try {
+                    // TODO : adapte ici en fonction du vrai JSON
+                    // Exemple DEMO :
+                    double scoreSoil = 0.6;
+                    double scoreWater = 0.4;
+                    double scoreNitrogen = 0.7;
 
-                AjoutPlanteFragment frag = AjoutPlanteFragment.newInstance(imageList);
-                requireActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainer, frag)
-                        .addToBackStack(null)
-                        .commit();
-            });
+                    // Mets à jour l’objet plante
+                    plante.setScoreSoilStructure(scoreSoil);
+                    plante.setScoreWaterRetention(scoreWater);
+                    plante.setScoreNitrogenFixation(scoreNitrogen);
+
+                } catch (Exception e) {
+                    // Mets des valeurs par défaut si erreur
+                    plante.setScoreSoilStructure(0.0);
+                    plante.setScoreWaterRetention(0.0);
+                    plante.setScoreNitrogenFixation(0.0);
+                }
+
+                // Insère la plante dans la base et navigue
+                Executors.newSingleThreadExecutor().execute(() -> {
+                    AppDatabase db = AppDatabase.getInstance(requireContext());
+                    db.planteDao().insert(plante);
+
+                    requireActivity().runOnUiThread(() -> {
+                        ArrayList<String> imageList = getArguments() != null ? getArguments().getStringArrayList("imageList") : new ArrayList<>();
+                        if (imageList == null) imageList = new ArrayList<>();
+                        imageList.add(imagePath);
+
+                        AjoutPlanteFragment frag = AjoutPlanteFragment.newInstance(imageList);
+                        requireActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragmentContainer, frag)
+                                .addToBackStack(null)
+                                .commit();
+                    });
+                });
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                requireActivity().runOnUiThread(() ->
+                        Toast.makeText(requireContext(), "Erreur analyse PlantNet", Toast.LENGTH_SHORT).show()
+                );
+                // Tu peux insérer quand même la plante avec des scores 0 si tu veux
+            }
         });
     }
+
 
     @Override
     public void onDestroy() {
