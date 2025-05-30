@@ -158,6 +158,7 @@ public class HistoriqueFragment extends Fragment {
                         // --- À adapter selon le JSON réel ---
                         JSONObject json = new JSONObject(plantNetJson);
                         // scoreSoil[0] += ...; scoreWater[0] += ...; scoreNitrogen[0] += ...;
+                        // TODO : Extraire les scores réels du JSON
                         scoreSoil[0] += 0.6;
                         scoreWater[0] += 0.4;
                         scoreNitrogen[0] += 0.7;

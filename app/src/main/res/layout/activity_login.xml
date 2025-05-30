@@ -12,7 +12,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="8dp"
-        android:background="#FFFFFF"
+        android:background="@color/background"
         android:src="@drawable/ic_back"
         android:contentDescription="Back button"
         app:tint="#436B44" />
@@ -57,7 +57,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nom d'utilisateur"
+                    android:text="Adresse mail"
                     android:textColor="#666666"
                     android:textSize="14sp" />
 
@@ -90,10 +90,11 @@
                     android:textColor="#000000" />
 
                 <TextView
+                    android:id="@+id/forgotPasswordText"
                     android:layout_width="355dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:gravity="center"
+                    android:gravity="center_horizontal"
                     android:textStyle="italic"
                     android:text="Mot de passe oublié ? Réinitialiser"
                     android:textColor="#666666"

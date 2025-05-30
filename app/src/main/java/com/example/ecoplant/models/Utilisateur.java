@@ -1,25 +1,26 @@
 package com.example.ecoplant.models;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "utilisateurs")
 public class Utilisateur {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @PrimaryKey
+    @NonNull
+    private String uid;
 
     private String username;
     private String email;
     private String passwordHash;
 
     // Getters et setters
-    public int getId() {
-        return id;
+    public String getUid() {
+        return uid;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getUsername() {

@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText passwordEdit = findViewById(R.id.passwordEdit);
         MaterialButton signinButton = findViewById(R.id.signinButton);
         ImageButton backButton = findViewById(R.id.backButton);
+        TextView forgotPasswordText = findViewById(R.id.forgotPasswordText);
 
         signinButton.setOnClickListener(v -> {
             String email = usernameEdit.getText().toString().trim();
@@ -65,7 +67,17 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         backButton.setOnClickListener(v -> finish());
+
+        forgotPasswordText.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, ResetpasswordActivity.class);
+            startActivity(intent);
+        });
+
     }
+
+
+
+
 
     private boolean isInternetAvailable() {
         ConnectivityManager cm =

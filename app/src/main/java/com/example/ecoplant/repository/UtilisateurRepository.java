@@ -32,17 +32,27 @@ public class UtilisateurRepository {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
-                        Toast.makeText(context, "Inscription réussie", Toast.LENGTH_SHORT).show();
+                        if (firebaseUser != null) {
+                            String uid = firebaseUser.getUid();
+                            user.setUid(uid);  // Met à jour l'UID dans l'objet User
 
-                        // Insertion Room locale
-                        Executors.newSingleThreadExecutor().execute(() -> utilisateurDao.insert(user));
+                            // Insertion Room locale avec l'UID correct
+                            Executors.newSingleThreadExecutor().execute(() -> {
+                                utilisateurDao.insert(user);
+                                Log.d("Inscription", "Utilisateur inséré dans Room avec UID : " + uid);
+                            });
 
+                            Toast.makeText(context, "Inscription réussie", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.e("Inscription", "FirebaseUser null après création");
+                        }
                     } else {
                         Toast.makeText(context, "Erreur : " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         Log.e("Inscription", task.getException().toString());
                     }
                 });
     }
+
 
     // Connexion en ligne (Firebase)
     public void connecterUtilisateurFirebase(String email, String password, UtilisateurLoginCallback callback) {

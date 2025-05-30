@@ -128,7 +128,7 @@ public class CameraFragment extends Fragment {
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
                         requireActivity().runOnUiThread(() -> {
-                            Toast.makeText(requireContext(), "Photo prise : " + photoFile.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(requireContext(), "Photo prise : " + photoFile.getAbsolutePath(), Toast.LENGTH_SHORT).show();
                             enregistrerPlanteEtNaviguer(photoFile.getAbsolutePath());
                         });
                     }

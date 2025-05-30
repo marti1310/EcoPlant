@@ -22,4 +22,7 @@ public interface UtilisateurDao {
 
     @Query("SELECT * FROM utilisateurs WHERE email = :email AND passwordHash = :password LIMIT 3")
     Utilisateur getUserByEmailAndPassword(String email, String password);
+
+    @Query("SELECT * FROM utilisateurs WHERE uid = :uid LIMIT 1")
+    Utilisateur findByUid(String uid);
 }
