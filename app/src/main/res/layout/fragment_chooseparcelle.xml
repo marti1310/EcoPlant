@@ -39,14 +39,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/save">
 
-        <!-- TOUT est DANS UN SEUL LinearLayout -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Ici tu peux placer une liste ou recyclerview pour afficher tes parcelles dynamiquement -->
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,11 +58,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
-                    <!-- Exemple de CardView (à dupliquer dynamiquement depuis l’adapter) -->
-                    <!--
-                    <include layout="@layout/item_parcelle_card"/>
-                    -->
 
                 </LinearLayout>
             </HorizontalScrollView>

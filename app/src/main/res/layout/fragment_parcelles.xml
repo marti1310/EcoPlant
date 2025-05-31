@@ -103,13 +103,13 @@
                 android:textSize="13dp"/>
 
 
-            <EditText
+            <TextView
                 android:id="@+id/parcelleDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_white_bg"
                 android:padding="12dp"
-                android:text="Potager estival"
+                android:text=""
                 android:layout_marginTop="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/text_light_green" />
@@ -123,7 +123,7 @@
                 android:textSize="20sp"
                 android:layout_marginTop="20dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/score1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -132,9 +132,10 @@
                 android:text="Amélioration de la strcture du sol : "
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
+                android:textSize="18dp"
                 android:textColor="@color/text_light_green" />
 
-            <EditText
+            <TextView
                 android:id="@+id/score2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,9 +144,10 @@
                 android:text="Capacité à retenir l'eau dans le sol : "
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
+                android:textSize="18dp"
                 android:textColor="@color/text_light_green" />
 
-            <EditText
+            <TextView
                 android:id="@+id/score3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,6 +156,7 @@
                 android:text="Apport en azote : "
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
+                android:textSize="18dp"
                 android:textColor="@color/text_light_green" />
         </LinearLayout>
     </ScrollView>

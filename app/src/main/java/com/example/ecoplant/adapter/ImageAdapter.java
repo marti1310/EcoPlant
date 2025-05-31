@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.ecoplant.R;
 
+import java.io.File;
 import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
@@ -32,10 +33,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         String imagePath = imageList.get(position);
-
         android.util.Log.d("ImageAdapter", "onBindViewHolder imagePath = " + imagePath);
 
         if (!imagePath.contains("/") && !imagePath.contains("storage")) {
+            // Chargement depuis drawable
             int resId = holder.imageView.getContext().getResources()
                     .getIdentifier(imagePath, "drawable", holder.imageView.getContext().getPackageName());
             android.util.Log.d("ImageAdapter", "Drawable resource id = " + resId);
@@ -43,11 +44,14 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                     .load(resId)
                     .into(holder.imageView);
         } else {
+            // Chargement depuis fichier local
+            File imageFile = new File(imagePath);
             Glide.with(holder.imageView.getContext())
-                    .load(imagePath)
+                    .load(imageFile)
                     .into(holder.imageView);
         }
     }
+
 
     @Override
     public int getItemCount() {

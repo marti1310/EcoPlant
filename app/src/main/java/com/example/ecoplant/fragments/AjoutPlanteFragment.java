@@ -1,6 +1,7 @@
 package com.example.ecoplant.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,11 +39,17 @@ public class AjoutPlanteFragment extends Fragment {
         if (getArguments() != null) {
             imageList = getArguments().getStringArrayList(ARG_IMAGE_LIST);
             if (imageList == null) imageList = new ArrayList<>();
+            if (imageList != null) {
+                for (String path : imageList) {
+                    Log.d("AjoutPlanteFragment", "Image path: " + path);
+                }
+            }
+
         }
         // TEST : ajoute une image locale si la liste est vide (pour vérifier l’affichage)
-        if (imageList.isEmpty()) {
-            imageList.add("flower2");
-        }
+        //if (imageList.isEmpty()) {
+        //    imageList.add("flower2");
+        //}
     }
 
     @Nullable
@@ -55,6 +62,7 @@ public class AjoutPlanteFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerPhotos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(new ImageAdapter(imageList));
+
 
         // "Ajouter une plante/photo"
         ImageButton addButton = view.findViewById(R.id.ajouter_button);

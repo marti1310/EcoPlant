@@ -37,8 +37,6 @@ public class DescriptionParcelleFragment extends Fragment {
         // Affichage image principale (file path)
         if (imagePath != null) {
             parcelleImage.setImageURI(android.net.Uri.parse(imagePath));
-        } else {
-            parcelleImage.setImageResource(R.drawable.flower2);
         }
 
         // Remplit les champs avec les scores reçus (ex : Amélioration sol, ...)

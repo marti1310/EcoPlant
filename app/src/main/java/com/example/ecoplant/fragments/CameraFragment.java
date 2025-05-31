@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -146,7 +147,9 @@ public class CameraFragment extends Fragment {
 
     /** Image test (pour simulateur/émulateur) **/
     private void useTestImage() {
-        File testFile = new File(requireContext().getExternalCacheDir(), "test_photo.jpg");
+        File testFile = new File(requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES),
+                "photo_" + System.currentTimeMillis() + ".jpg"
+        );
         if (!testFile.exists()) {
             try (@SuppressLint("ResourceType") java.io.InputStream in = requireContext().getResources().openRawResource(R.drawable.flower2);
                  java.io.OutputStream out = new java.io.FileOutputStream(testFile)) {

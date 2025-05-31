@@ -21,9 +21,8 @@ public class StartActivity extends AppCompatActivity {
 
         BottomNavigationView nav = findViewById(R.id.navigation);
 
-        // Affiche le fragment profil par défaut
         if (savedInstanceState == null) {
-            showFragment(new ProfilFragment());
+            showFragment(new HistoriqueFragment());
             nav.setSelectedItemId(R.id.action_home);
 
         }

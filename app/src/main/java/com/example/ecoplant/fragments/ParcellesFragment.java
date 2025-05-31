@@ -62,13 +62,12 @@ public class ParcellesFragment extends Fragment {
             });
         });
 
-        // 2. Bouton pour prendre une nouvelle photo (ajouter une plante)
+        // 2. Bouton pour prendre une nouvelle parcelle
         ImageButton addButton = view.findViewById(R.id.ajouter_button);
         addButton.setOnClickListener(v -> {
-            CameraFragment frag = CameraFragment.newInstance(photoList);
             requireActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragmentContainer, frag)
+                    .replace(R.id.fragmentContainer, CreationParcelleFragment.newInstance(photoList))
                     .addToBackStack(null)
                     .commit();
         });
@@ -91,13 +90,9 @@ public class ParcellesFragment extends Fragment {
                         requireActivity().onBackPressed(); // Ou naviguer vers le profil
                     });
                 });
+
             } else {
-                // Aucune parcelle sélectionnée, va vers création
-                requireActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainer, CreationParcelleFragment.newInstance(photoList))
-                        .addToBackStack(null)
-                        .commit();
+                Toast.makeText(getContext(), "Veuillez sélectionner une parcelle ou en créer une nouvelle", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -122,10 +117,7 @@ public class ParcellesFragment extends Fragment {
             String img = (images != null && !images.isEmpty()) ? images.get(0) : null;
             if (img != null && !img.isEmpty()) {
                 imageView.setImageURI(android.net.Uri.fromFile(new java.io.File(img)));
-            } else {
-                imageView.setImageResource(R.drawable.flower2);
             }
-
             titleView.setText(parcelle.getName() != null ? parcelle.getName() : "Sans titre");
 
             checkBox.setChecked(selectedParcelle == parcelle);
